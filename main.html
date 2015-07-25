@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body class="container">
+        <div class="electron-container">
+        <h3>Electron Remote Object Actions:</h3>
+        <button class="btn btn-sm btn-block  btn-primary"
+                onclick="doFullScreen()">
+            <span class="glyphicon glyphicon-resize-full"></span>
+            FullScreen
+        </button>
+        <button class="btn btn-sm btn-block btn-info"
+                onclick="exitFullScreen()">
+            <span class="glyphicon glyphicon-resize-small"></span>
+            Exit FullScreen
+        </button>
+        <button class="btn btn-sm btn-block  btn-success"
+                onclick="toggleDeveloperTool()">
+            <span class="glyphicon glyphicon-cog"></span>
+            Toggle Developer Tool
+        </button>
+        <button class="btn btn-sm btn-block  btn-warning"
+                onclick="quitApplication()">
+            <span class="glyphicon glyphicon-off"></span>
+            Quit Application
+        </button>
+    </div>
+    </body>
+    <script>
+        var remote= require('remote'),
+                app = remote.require('app'),
+                myWindow = remote.getCurrentWindow();
+        var doFullScreen = function(){
+            myWindow.setFullScreen(true);
+        };
+        var exitFullScreen = function(){
+            myWindow.setFullScreen(false);
+        };
+        var toggleDeveloperTool = function(){
+            myWindow.toggleDevTools();
+        };
+        var quitApplication = function(){
+            app.quit();
+        };
+    </script>
+</html>
+
+
